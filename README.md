@@ -18,16 +18,16 @@ npm install
 - run tests `npm run test`
 
 ## Problem:
-In the test file `test/FakeProviderMethod.spec.ts` this line of code, should fake Twilio service call:     
+In the test file `test/FakeServiceMethod.spec.ts` this line of code, should fake service call:     
 ```javascript
 const fakeResponse = 'fake response data'
 
-  Application.container.fake('Services/Twilio', () => {
+  Application.container.fake('Services/SomeService', () => {
     return {
-      sendSMS(to, body) {
-        console.log(`You've make a fake send message request\nto: ${to}\nwith body: ${body}`)
+      doStuff() {
+        console.log('fakes service call')
 
-        return { success: fakeResponse }
+        return fakeResponse
       }
     }
   })
